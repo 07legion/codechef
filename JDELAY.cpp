@@ -43,44 +43,12 @@ int main() {
     clock_t zzzx=clock();
     ll T;cin>>T;
     while(T--){
-        ll N,M,Li,Ri;cin>>N>>M;
-        vector<pair<ll,ll> >v;
+        ll N,Si,Ji,ct=0;cin>>N;
         fori(i,0,N){
-            cin>>Li>>Ri;
-            v.pb(mp(Li,Ri));
+            cin>>Si>>Ji;
+            if((Ji-Si)>5) ct++;
         }
-        sort(v.begin(),v.end());
-        ll Pi;
-        //ll k1,k2,k3;
-        fori(i,0,M){
-            cin>>Pi; ll k2=0,k1=0,k3=0;
-            fori(i,0,v.size()){
-                if(Pi>=v[i].first && Pi<v[i].second){
-                    cout<<0<<"\n";k1++;
-                    break;
-                }
-            }
-            if(k1==0){
-                fori(i,0,v.size()){
-                    if(v[i].second==Pi && i!=v.size()-1){
-                        cout<<llabs(v[i+1].first-Pi)<<"\n";
-                        k2++;
-                        break;
-                    }
-                }
-                if(k2==0){
-                    fori(i,0,v.size()){
-                        if(v[i].first>Pi){
-                            cout<<llabs(v[i].first-Pi)<<"\n";
-                            k3++;
-                            break;
-                        }
-                    }
-                }
-            }
-            if(k1==0 && k2==0 && k3==0)
-                cout<<-1<<"\n";
-        }
+        cout<<ct<<"\n";
     } 
     double elapsed_time=(double)(clock()-zzzx)/CLOCKS_PER_SEC;
     debug2(elapsed_time);
